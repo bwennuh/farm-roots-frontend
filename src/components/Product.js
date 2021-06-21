@@ -15,18 +15,43 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Product = () => {
 
+    console.log('!')
+
     const [startDate1, setStartDate1] = useState(null)
     const [endDate1, setEndDate1] = useState(null)
 
-    // const [superStartDate, setSuperStartDate]
+    
 
+    const [superStartDate, setSuperStartDate] = useState([])
+
+    console.log('!!')
     function showDateSelections(startDate, endDate){
-      console.log("From Product Component:")
-      console.log("Start Date: " + startDate1)
-      console.log("End Date: " + endDate1)
 
-      setStartDate1(startDate)
-      setEndDate1(endDate)
+        console.log('!!!')
+    //   console.log("From Product Component:")
+    //   console.log("Start Date: " + startDate1)
+    //   console.log("End Date: " + endDate1)
+
+      
+        setStartDate1(startDate)
+        setEndDate1(endDate)
+
+        console.log('!!!!')
+
+        superStartDate.push(1)
+        console.log(superStartDate)
+        console.log(superStartDate.splice(-1))
+
+        console.log('!!!!!')
+        
+
+
+    //   setSuperStartDate([...superStartDate, startDate1])
+
+
+
+
+
 
     }
 
@@ -43,6 +68,7 @@ const Product = () => {
           <label>Harvest Dates</label>
           <ProductCalendar showDateSelections={showDateSelections} />
           <ul>
+            <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
             <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
             {/* <li>Date Selection 1</li>
             <li>Date Selection 2</li>
