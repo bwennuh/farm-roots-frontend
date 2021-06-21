@@ -1,12 +1,20 @@
 import React from 'react';
-// import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
     <div className ="navbar">
 
         <div className ="home-button">
-          <button>Home</button>
+          <Link to='/login'>
+            <button>Login Page</button>
+          </Link>
+        </div>
+
+        <div className ="home-button">
+          <Link to='/home'>
+            <button>Customer Home Page</button>
+          </Link>
         </div>
 
         <div className ="search-bar">
@@ -14,7 +22,15 @@ function Navbar() {
         </div>   
 
         <div className ="cart">
-          <button>See Cart 🛒</button>
+          <Link to='/cart'>
+            <button>See Cart 🛒</button>
+          </Link>
+        </div>  
+
+        <div className ="create-farm">
+          <Link to='/new-farm'>
+            <button>Add New Farm</button>
+          </Link>
         </div>  
 
     </div>
