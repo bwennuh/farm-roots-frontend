@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
 
-import FarmCardContainer from './FarmCardContainer.js'
+import FarmPage from './FarmPage.js'
 
 class Home extends Component {
 
@@ -9,11 +9,7 @@ class Home extends Component {
     return(
       <div className="home-page">
 
-        {/* <h1>Customer Home Page</h1>
-        <FarmCardContainer /> */}
-
-        <h1>Farm Home Page</h1>
-        
+        <h1>Farm Information Page</h1>
 
       </div>
     )
