@@ -8,6 +8,7 @@ import Home from './components/Home.js'
 import FarmPage from './components/FarmPage.js'
 import Cart from './components/Cart.js'
 import FarmForm from './components/FarmForm.js'
+import Product from './components/Product.js'
 
 class App extends Component {
   render(){
@@ -36,6 +37,14 @@ class App extends Component {
           <Route path='/new-farm'>
             <FarmForm />
           </Route>
+
+          <Route path='/product'>
+            <Product />
+          </Route>
+
+
+
+
 
         </Switch>
       </div>

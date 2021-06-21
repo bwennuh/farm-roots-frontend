@@ -9,8 +9,8 @@ class Home extends Component {
     return(
       <div className="home-page">
 
-        {/* <h1>Customer Home Page</h1>
-        <FarmCardContainer /> */}
+        <h1>Customer Home Page</h1>
+        <FarmCardContainer />
 
         <h1>Farm Home Page</h1>
         

@@ -13,6 +13,15 @@ class FarmCard extends Component {
           <button>Farm Info Page</button>
         </Link>
 
+        <Link to='/product'>
+          <button>Add Product</button>
+        </Link>
+
+
+        
+
+
+
       </div>
 
     )

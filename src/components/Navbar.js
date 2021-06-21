@@ -13,7 +13,7 @@ function Navbar() {
 
         <div className ="home-button">
           <Link to='/home'>
-            <button>Customer Home Page</button>
+            <button>Home Page</button>
           </Link>
         </div>
 
