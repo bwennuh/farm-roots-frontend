@@ -19,15 +19,15 @@ export default function ProductCalendar(props) {
         // console.log(Date.parse(state[0].startDate))
         // console.log(state[0].endDate)
 
-        console.log("Start date examples:")
-        console.log(state[0].startDate)
+                    // console.log("Start date examples:")
+                    // console.log(state[0].startDate)
         // console.log(state[0].startDate.toDateString())
         // console.log(state[0].startDate.toLocaleDateString())
-        console.log(state[0].startDate.toLocaleDateString('us-US', options))
+                    // console.log(state[0].startDate.toLocaleDateString('us-US', options))
 
-        console.log("---------")
-        console.log("End date examples:")
-        console.log(state[0].endDate)
+                    // console.log("---------")
+                    // console.log("End date examples:")
+                    // console.log(state[0].endDate)
         // console.log(state[0].endDate.toLocaleDateString())
 
         let startDate = state[0].startDate
