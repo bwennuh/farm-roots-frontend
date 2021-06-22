@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 
 import ProductCard from './ProductCard'
 import Cart from './Cart';
-import FarmPage from './FarmPage.js'
+// import FarmPage from './FarmPage.js'
 
 class FarmPage extends Component {
 
@@ -21,10 +21,10 @@ class FarmPage extends Component {
     })
   }
 
-  addtoCart = (e) => {
-    console.log (e)
+  // addtoCart = (e) => {
+  //   console.log (e)
+  // }
 
-  }
 
 
   render(){
@@ -34,10 +34,15 @@ class FarmPage extends Component {
 
         <h1>Farm Information Page</h1>
 
-        <ProductCard productCartInfo = {this.productCartInfo}/>
+        <ProductCard productCartInfo={this.productCartInfo} addToCart={this.props.addToCart}/>
 
         <div style = {{display:"none"}}>
-                <Cart productNames = {this.state.productNames} productPrices = {this.state.productPrices} productInfo = {this.state.productInfo}/>
+          <Switch>
+            <Route path='/cart'>
+              <Cart productNames = {this.state.productNames} productPrices = {this.state.productPrices} productInfo = {this.state.productInfo}/>
+            </Route>
+          </Switch>
+
         </div>
 
       </div>

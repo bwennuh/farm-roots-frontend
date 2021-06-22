@@ -11,10 +11,11 @@ import FarmForm from './components/FarmForm.js'
 import Product from './components/Product.js'
 
 class App extends Component {
+  
   render(){
     return (
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Switch>
 
@@ -30,9 +31,9 @@ class App extends Component {
             <FarmPage />
           </Route>
 
-          <Route path='/cart'>
+          {/* <Route path='/cart'>
             <Cart />
-          </Route>
+          </Route> */}
 
           <Route path='/new-farm'>
             <FarmForm />
@@ -41,10 +42,6 @@ class App extends Component {
           <Route path='/product'>
             <Product />
           </Route>
-
-
-
-
 
         </Switch>
       </div>

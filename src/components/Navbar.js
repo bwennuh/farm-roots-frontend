@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function Navbar() {
+function Navbar(props) {
   return (
     <div className ="navbar">
 
@@ -12,9 +12,12 @@ function Navbar() {
         </div>
 
         <div className="home-button">
-          <Link to='/home'>
+          {/* <Link to='/home'>
             <button className="navbar-button" id="home-button">Home Page</button>
-          </Link>
+          </Link> */}
+
+          <button className="navbar-button" id="home-button" onClick={props.changeToHome}>Home Page</button>
+
         </div>
 
         <div className="search-bar">
@@ -22,9 +25,9 @@ function Navbar() {
         </div>   
 
         <div className="cart-button">
-          <Link to='/cart'>
+          {/* <Link to='/cart'> */}
             <button className="navbar-button" id="cart-button">See Cart <span id="cart-emoji">🛒</span></button>
-          </Link>
+          {/* </Link> */}
         </div>  
 
         <div className ="create-farm">

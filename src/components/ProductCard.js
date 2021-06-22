@@ -6,16 +6,22 @@ import Cart from './Cart'
 export default class ProductCard extends Component {
 
     state = {
-        productNames: [1],
+        productNames: [],
         productPrices: [],
         datesAvailable: [],
     }
 
     sendToFarmPage = () => {
-        let x = "Brenna"
+        // let x = "Brenna"
+        // let price = 9
+        // let info = "hey"
+        // this.props.productCartInfo(x, price, info)
+
+        let productName = this.props.name
         let price = 9
         let info = "hey"
-        this.props.productCartInfo(x, price, info)
+
+        this.props.addToCart(productName, price, info)
     }
 
     render() {
@@ -23,16 +29,14 @@ export default class ProductCard extends Component {
             <div>
                 <div>
                     <img ></img>
-                    <h3>Product Name</h3>
+                    <h3>Product Name: {this.props.name}</h3>
                     <p>Dates Available</p>
                     <p>Price</p>
                 </div>
                 <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button>
 
-            
             </div>
 
-            
         )
     }
 }
