@@ -29,6 +29,7 @@ export default function ProductCalendar(props) {
         // console.log("---------")
         // console.log("End date examples:")
         // console.log(state[0].endDate)
+
         // console.log(state[0].endDate.toLocaleDateString())
 
         let startDate = state[0].startDate
@@ -38,23 +39,23 @@ export default function ProductCalendar(props) {
         // console.log(props)
     };
 
-    function getCalendarDiv(){
-        // let calendarDiv = document.getElementsByClassName("rdrDays").item(0)
-        // console.log(calendarDiv)
+    // function getCalendarDiv(){
+    //     // let calendarDiv = document.getElementsByClassName("rdrDays").item(0)
+    //     // console.log(calendarDiv)
 
-        // calendarDiv?.addEventListener('mouseup', e => {
-        //     console.log("Div mouseup test")
-        // })
+    //     // calendarDiv?.addEventListener('mouseup', e => {
+    //     //     console.log("Div mouseup test")
+    //     // })
 
-        // let calendarDiv = document.getElementsByClassName("rdrDays").item(0)
-        // // console.log(calendarDiv)
+    //     // let calendarDiv = document.getElementsByClassName("rdrDays").item(0)
+    //     // // console.log(calendarDiv)
 
-        // calendarDiv?.addEventListener('click', e => {
-        //     console.log("hi")
-        //     debugger
-        // })
+    //     // calendarDiv?.addEventListener('click', e => {
+    //     //     console.log("hi")
+    //     //     debugger
+    //     // })
         
-    }
+    // }
     
 
     return (

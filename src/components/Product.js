@@ -15,22 +15,33 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Product = () => {
 
+    console.log('!')
+
     const [startDate1, setStartDate1] = useState(null)
     const [endDate1, setEndDate1] = useState(null)
 
-    // const [superStartDate, setSuperStartDate] = useState(new Array(0))
     const [superStartDate, setSuperStartDate] = useState([])
 
+
+    
     function showDateSelections(startDate, endDate){
 
-      setStartDate1(startDate)
-      setEndDate1(endDate)
+        console.log('!!!')
+    //   console.log("From Product Component:")
+    //   console.log("Start Date: " + startDate1)
+    //   console.log("End Date: " + endDate1)
+    //   console.log(superStartDate)
 
-      console.log("From Product Component:")
-      console.log("Start Date: " + startDate1)
-      console.log("End Date: " + endDate1)
+        setStartDate1(startDate)
+        setEndDate1(endDate)
 
-      console.log(superStartDate)
+        console.log('!!!!')
+
+        superStartDate.push(1)
+        console.log(superStartDate)
+        console.log(superStartDate.splice(-1))
+
+        console.log('!!!!!')
 
       // superStartDate.push(startDate)
       setSuperStartDate([...superStartDate, startDate])
@@ -52,33 +63,33 @@ const Product = () => {
     return (
     <div className="product-page">
 
-          <h1>Add a Product</h1>
+      <h1>Add a Product</h1>
 
-          <form className="new-product-form">
+      <form className="new-product-form">
 
-          <label>Describe Your Produce:</label><br></br>
-          <input value={""} type="text" placeholder="" /><br></br><br></br>
+        <label>Describe Your Produce:</label><br></br>
+        <input value={""} type="text" placeholder="" /><br></br><br></br>
 
-          <label>Harvest Dates</label>
-          <ProductCalendar showDateSelections={showDateSelections} />
+        <label>Harvest Dates</label>
+        <ProductCalendar showDateSelections={showDateSelections} />
 
-          <ul id="date-list">
-            <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
-          </ul>
-
-
-          {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /><br></br><br></br> */}
-
-          <label>Price:</label><br></br>
-          <input value={""} type="text" placeholder="Price" /><br></br><br></br>
+        <ul id="date-list">
+          <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
+        </ul>
 
 
-          <label>Upload Farm Picture:</label><br></br>
-          <input value={""} type="file" placeholder="Farm Picture" /><br></br><br></br>
+        {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /><br></br><br></br> */}
 
-          <button type="submit">Submit Farm</button>
+        <label>Price:</label><br></br>
+        <input value={""} type="text" placeholder="Price" /><br></br><br></br>
 
-    </form>
+
+        <label>Upload Farm Picture:</label><br></br>
+        <input value={""} type="file" placeholder="Farm Picture" /><br></br><br></br>
+
+        <button type="submit">Submit Farm</button>
+
+      </form>
 
     </div>
   )
