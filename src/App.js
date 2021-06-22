@@ -13,30 +13,44 @@ import Product from './components/Product.js'
 class App extends Component {
 
   state = {
-    username: ""
+    username: "",
+    checked: false,
+    display: "login"
   }
 
-  getUsername = (user) => {
+  getUsername = (user, checked) => {
     this.setState({
-      username: user
+      username: user,
+      checked: checked
     })
   }
+
+  changeToHome = () => {
+    this.setState({
+      display: "home"
+    })
+  }
+
+  changeToLogin = () => {
+    this.setState({
+      display: "login"
+    })
+  }
+
+
+
+  
   
   render(){
     return (
       <div className="App">
-        {/* <Navbar /> */}
+        <Navbar changeToLogin = {this.changeToLogin}/>
+
+        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked}/> : null }
+        { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername}/> : null }
+
 
         <Switch>
-
-          <Route exact path={['/', '/login']}>
-            <Login getUsername = {this.getUsername}/>
-          </Route>
-
-          <Route path='/home'>
-            <Home />
-          </Route>
-
           <Route path='/farm-info'>
             <FarmPage />
           </Route>

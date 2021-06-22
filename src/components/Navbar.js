@@ -6,9 +6,9 @@ function Navbar(props) {
     <div className ="navbar">
 
         <div className="login-button">
-          <Link to='/login'>
-            <button className="navbar-button" id="login-button">Login Page</button>
-          </Link>
+          {/* <Link to='/login'> */}
+            <button className="navbar-button" id="login-button" onClick = {() => props.changeToLogin()}>Login Page</button>
+          {/* </Link> */}
         </div>
 
         <div className="home-button">

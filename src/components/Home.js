@@ -14,6 +14,8 @@ class Home extends Component {
     cart: []
   }
 
+  
+
   // Changes the display to the cart
   changeToCart = () => {
     this.setState({display: "Cart"})
@@ -33,7 +35,8 @@ class Home extends Component {
   render(){
     return(
       <div className="home-page">
-        <Navbar display={this.state.display} changeToHome={this.changeToHome} />
+        
+        {/* <Navbar changeToLogin = {this.props.changeToLogin} /> */}
 
         <h1>Customer Home Page</h1>
         <FarmCardContainer addToCart={this.addToCart}/>

@@ -25,8 +25,10 @@ class Login extends Component {
     this.setState({
       username: user
     })
-    this.props.getUsername(user)
+    this.props.getUsername(user, this.state.checked)
   }
+
+
   
 
   render(){
@@ -46,7 +48,7 @@ class Login extends Component {
         <form onSubmit = {(e) => this.submitHandler(e)}>
           <input placeholder="username"/><br></br><br></br>
           {/* <Link to='/home'> */}
-            <button id="login-button">Login</button><br></br><br></br><br></br>
+            <button onClick = {this.props.changeToHome()} id="login-button">Login</button><br></br><br></br><br></br>
           {/* </Link> */}
         </form>
 
