@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
 
-import FarmPage from './FarmPage.js'
+class FarmPage extends Component {
 
-class Home extends Component {
+  state = {
+
+  }
 
   render(){
     return(
@@ -16,4 +18,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default FarmPage
