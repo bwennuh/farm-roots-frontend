@@ -3,6 +3,14 @@ import React, { Component } from 'react';
 
 class Cart extends Component {
 
+
+    state = {
+      productNames: [],
+      productPrices: [],
+      productInfo: [],
+    }
+
+
   render(){
     return(
       <div>
