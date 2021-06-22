@@ -11,6 +11,16 @@ import FarmForm from './components/FarmForm.js'
 import Product from './components/Product.js'
 
 class App extends Component {
+
+  state = {
+    username: ""
+  }
+
+  getUsername = (user) => {
+    this.setState({
+      username: user
+    })
+  }
   
   render(){
     return (
@@ -20,7 +30,7 @@ class App extends Component {
         <Switch>
 
           <Route exact path={['/', '/login']}>
-            <Login />
+            <Login getUsername = {this.getUsername}/>
           </Route>
 
           <Route path='/home'>
