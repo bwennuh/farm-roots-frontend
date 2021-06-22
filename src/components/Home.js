@@ -14,8 +14,6 @@ class Home extends Component {
     cart: []
   }
 
-  
-
   // Changes the display to the cart
   changeToCart = () => {
     this.setState({display: "Cart"})
@@ -32,23 +30,31 @@ class Home extends Component {
     })
   }
 
+  seeCart = () => {
+    this.setState({
+      display: "Cart"
+    })
+  }
+
+  closeCart = () => {
+    this.setState({
+      display: "Home"
+    })
+  }
+
   render(){
     return(
       <div className="home-page">
         
-        {/* <Navbar changeToLogin = {this.props.changeToLogin} /> */}
+        { this.props.checked == true ? <h1>Farmer Home Page</h1> : <h1>Customer Home Page</h1> }
+        {/* <h1>Customer Home Page</h1> */}
+        <h2>{`Username: ${this.props.username}`}</h2>
+        <button onClick={() => this.seeCart()}>See Cart</button>
+        <button onClick={() => this.closeCart()}>Close Cart</button>
 
-        <h1>Customer Home Page</h1>
-        <FarmCardContainer addToCart={this.addToCart}/>
-
-
-        {/* <h1>Farm Home Page</h1> */}
-
-        {/* { this.state.display === "Home" ? <FarmCardContainer /> : null }
-        { this.state.display === "Cart" ? <Cart /> : null} */}
-
-        <Cart cart={this.state.cart} />
+        { this.state.display === "Home" ? <FarmCardContainer addToCart={this.addToCart} /> : null }
         
+        { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}
 
       </div>
     )

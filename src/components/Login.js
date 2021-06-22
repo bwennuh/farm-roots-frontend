@@ -14,7 +14,6 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
   handleChange(checked) {
     this.setState({ checked });
   }
@@ -26,10 +25,8 @@ class Login extends Component {
       username: user
     })
     this.props.getUsername(user, this.state.checked)
+    this.props.changeToHome()
   }
-
-
-  
 
   render(){
     return(
@@ -37,27 +34,18 @@ class Login extends Component {
 
         <h1 className="farm-roots">Farm Roots 🥕</h1>
 
+        <h2>Enter username:</h2>
+        <form onSubmit = {(e) => this.submitHandler(e)}>
+          <input placeholder="username"/><br></br><br></br>
+          <button type="submit" id="login-button">Login</button>
+          <button type="submit" id="signup-button">Sign Up</button>
+        </form>
+        <br></br>
 
         <label>
           <span>I am a farmer</span><br></br>
           <Switch onChange={this.handleChange} checked={this.state.checked} />
         </label>
-
-
-        <h2>Enter username:</h2>
-        <form onSubmit = {(e) => this.submitHandler(e)}>
-          <input placeholder="username"/><br></br><br></br>
-          {/* <Link to='/home'> */}
-            <button onClick = {this.props.changeToHome()} id="login-button">Login</button><br></br><br></br><br></br>
-          {/* </Link> */}
-        </form>
-
-
-
-
-
-
-
       
       </div>
     )
