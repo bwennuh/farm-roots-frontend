@@ -9,9 +9,14 @@ class Login extends Component {
 
         <h1 className="farm-roots">Farm Roots 🥕</h1>
 
+        <h2>Enter username:</h2>
+        <input value="username" /><br></br><br></br>
+
         <Link to='/home'>
           <button id="login-button">Login</button>
         </Link>
+
+
       
       </div>
     )
