@@ -4,7 +4,7 @@ import  ProductCalendar  from "./ProductCalendar";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,17 +18,36 @@ const Product = () => {
     const [startDate1, setStartDate1] = useState(null)
     const [endDate1, setEndDate1] = useState(null)
 
-    // const [superStartDate, setSuperStartDate]
+    // const [superStartDate, setSuperStartDate] = useState(new Array(0))
+    const [superStartDate, setSuperStartDate] = useState([])
 
     function showDateSelections(startDate, endDate){
-      console.log("From Product Component:")
-      console.log("Start Date: " + startDate1)
-      console.log("End Date: " + endDate1)
 
       setStartDate1(startDate)
       setEndDate1(endDate)
 
+      console.log("From Product Component:")
+      console.log("Start Date: " + startDate1)
+      console.log("End Date: " + endDate1)
+
+      console.log(superStartDate)
+
+      // superStartDate.push(startDate)
+      setSuperStartDate([...superStartDate, startDate])
     }
+
+    useEffect(() => {
+      console.log("Testing the use effect hook: " + superStartDate.length)
+
+      let dateList = document.getElementById('date-list')
+      let listItem = document.createElement('li')
+
+      listItem.textContent = `Start Date: ${superStartDate.slice(-1)[0]?.toLocaleDateString()}`
+
+      if (typeof superStartDate.slice(-1)[0]?.toLocaleDateString() !== 'undefined'){
+        dateList.appendChild(listItem)
+      }
+    })
 
     return (
     <div className="product-page">
@@ -42,11 +61,9 @@ const Product = () => {
 
           <label>Harvest Dates</label>
           <ProductCalendar showDateSelections={showDateSelections} />
-          <ul>
+
+          <ul id="date-list">
             <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
-            {/* <li>Date Selection 1</li>
-            <li>Date Selection 2</li>
-            <li>Date Selection 3</li> */}
           </ul>
 
 
