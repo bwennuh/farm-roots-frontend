@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
+
 import ProductCard from './ProductCard'
 import Cart from './Cart';
 import FarmPage from './FarmPage.js'
 
-class Home extends Component {
-
+class FarmPage extends Component {
 
   state = {
     productNames: [],
@@ -45,4 +45,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default FarmPage

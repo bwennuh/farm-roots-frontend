@@ -5,31 +5,31 @@ function Navbar() {
   return (
     <div className ="navbar">
 
-        <div className ="home-button">
+        <div className="login-button">
           <Link to='/login'>
-            <button>Login Page</button>
+            <button className="navbar-button" id="login-button">Login Page</button>
           </Link>
         </div>
 
-        <div className ="home-button">
+        <div className="home-button">
           <Link to='/home'>
-            <button>Home Page</button>
+            <button className="navbar-button" id="home-button">Home Page</button>
           </Link>
         </div>
 
-        <div className ="search-bar">
-          <input type="text" id="search-bar" value="Search" /><br></br>
+        <div className="search-bar">
+          <input className="navbar-search" type="text" id="search-bar" value="Search" /><br></br>
         </div>   
 
-        <div className ="cart">
+        <div className="cart-button">
           <Link to='/cart'>
-            <button>See Cart 🛒</button>
+            <button className="navbar-button" id="cart-button">See Cart <span id="cart-emoji">🛒</span></button>
           </Link>
         </div>  
 
         <div className ="create-farm">
           <Link to='/new-farm'>
-            <button>Add New Farm</button>
+            <button className="navbar-button" id="create-farm-button">Add New Farm</button>
           </Link>
         </div>  
 
