@@ -4,7 +4,7 @@ import  ProductCalendar  from "./ProductCalendar";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,19 +20,18 @@ const Product = () => {
     const [startDate1, setStartDate1] = useState(null)
     const [endDate1, setEndDate1] = useState(null)
 
-    
-
     const [superStartDate, setSuperStartDate] = useState([])
 
-    console.log('!!')
+
+    
     function showDateSelections(startDate, endDate){
 
         console.log('!!!')
     //   console.log("From Product Component:")
     //   console.log("Start Date: " + startDate1)
     //   console.log("End Date: " + endDate1)
+    //   console.log(superStartDate)
 
-      
         setStartDate1(startDate)
         setEndDate1(endDate)
 
@@ -43,51 +42,54 @@ const Product = () => {
         console.log(superStartDate.splice(-1))
 
         console.log('!!!!!')
-        
 
-
-    //   setSuperStartDate([...superStartDate, startDate1])
-
-
-
-
-
-
+      // superStartDate.push(startDate)
+      setSuperStartDate([...superStartDate, startDate])
     }
+
+    useEffect(() => {
+      console.log("Testing the use effect hook: " + superStartDate.length)
+
+      let dateList = document.getElementById('date-list')
+      let listItem = document.createElement('li')
+
+      listItem.textContent = `Start Date: ${superStartDate.slice(-1)[0]?.toLocaleDateString()}`
+
+      if (typeof superStartDate.slice(-1)[0]?.toLocaleDateString() !== 'undefined'){
+        dateList.appendChild(listItem)
+      }
+    })
 
     return (
     <div className="product-page">
 
-          <h1>Add a Product</h1>
+      <h1>Add a Product</h1>
 
-          <form className="new-product-form">
+      <form className="new-product-form">
 
-          <label>Describe Your Produce:</label><br></br>
-          <input value={""} type="text" placeholder="" /><br></br><br></br>
+        <label>Describe Your Produce:</label><br></br>
+        <input value={""} type="text" placeholder="" /><br></br><br></br>
 
-          <label>Harvest Dates</label>
-          <ProductCalendar showDateSelections={showDateSelections} />
-          <ul>
-            <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
-            <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
-            {/* <li>Date Selection 1</li>
-            <li>Date Selection 2</li>
-            <li>Date Selection 3</li> */}
-          </ul>
+        <label>Harvest Dates</label>
+        <ProductCalendar showDateSelections={showDateSelections} />
+
+        <ul id="date-list">
+          <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
+        </ul>
 
 
-          {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /><br></br><br></br> */}
+        {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /><br></br><br></br> */}
 
-          <label>Price:</label><br></br>
-          <input value={""} type="text" placeholder="Price" /><br></br><br></br>
+        <label>Price:</label><br></br>
+        <input value={""} type="text" placeholder="Price" /><br></br><br></br>
 
 
-          <label>Upload Farm Picture:</label><br></br>
-          <input value={""} type="file" placeholder="Farm Picture" /><br></br><br></br>
+        <label>Upload Farm Picture:</label><br></br>
+        <input value={""} type="file" placeholder="Farm Picture" /><br></br><br></br>
 
-          <button type="submit">Submit Farm</button>
+        <button type="submit">Submit Farm</button>
 
-    </form>
+      </form>
 
     </div>
   )
