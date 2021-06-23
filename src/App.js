@@ -1,12 +1,12 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Switch, Route, Link, Router } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Login from './components/Login.js'
 import Navbar from './components/Navbar.js'
 import Home from './components/Home.js'
 import FarmPage from './components/FarmPage.js'
-import Cart from './components/Cart.js'
+// import Cart from './components/Cart.js'
 import FarmForm from './components/FarmForm.js'
 import Product from './components/Product.js'
 
@@ -17,8 +17,6 @@ const products_URL = 'http://localhost:3001/products/'
 const farms_URL = 'http://localhost:3001/farms/'
 
 class App extends Component {
-
-
 
   state = {
     username: "",
@@ -32,7 +30,6 @@ class App extends Component {
 
   fetchUser = (username, checked) => {
     if (checked === false) {
-      console.log("Testing if statement for checked = false")
       fetch(customers_URL)
       .then(response => response.json())
       .then(customersArray => {
@@ -43,10 +40,9 @@ class App extends Component {
         this.renderCustomer(foundCustomer.id)
         this.renderAllFarms()
         this.fetchAllFarmProducts()
-        
+
     })
     } else if (checked === true) {
-      console.log("Testing if statement for checked = true")
       fetch(farms_URL)
       .then(response => response.json())
       .then(farmsArray => {
@@ -63,7 +59,6 @@ class App extends Component {
     fetch(customers_URL + id)
         .then(response => response.json())
         .then(customerObject => {
-          console.log(customerObject)
           this.fetchCustomerPurchases(id)
         })
   }
@@ -72,11 +67,9 @@ class App extends Component {
     fetch(farms_URL)
         .then(response => response.json())
         .then(allFarmObject => {
-          console.log(allFarmObject)
           this.setState({
             farms: allFarmObject
           })
-          
         })
   }
 
@@ -84,17 +77,14 @@ class App extends Component {
     fetch(farms_URL + id)
         .then(response => response.json())
         .then(farmObject => {
-          console.log(farmObject)
           this.fetchFarmProducts(id)
         })
   }
-
 
   fetchAllFarmProducts = () => {
     fetch(products_URL)
     .then(response => response.json())
     .then(productsArray => {
-        console.log(productsArray)
         this.setState({
           products: productsArray
         })
@@ -106,18 +96,14 @@ class App extends Component {
     .then(response => response.json())
     .then(productsArray => {
         let products = productsArray.filter(product => product.farm_id === id)
-        console.log(products)
       })
   }
-
-
 
   fetchCustomerPurchases = (id) => {
     fetch(purchases_URL)
         .then(response => response.json())
         .then(purchasesArray => {
           let foundPurchases = purchasesArray?.filter(purchase => purchase.customer_id === id)
-          console.log(foundPurchases)
           this.fetchCustomerProducts(foundPurchases)
     })
   }
@@ -128,7 +114,6 @@ class App extends Component {
         .then(productsArray => {
           purchases.map(purchase => {
             let product = productsArray.find(product => product.id === purchase.product_id)
-            console.log(product)
           })
     })
   }

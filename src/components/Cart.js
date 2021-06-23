@@ -19,6 +19,16 @@ class Cart extends Component {
     // })
   }
 
+  getCartTotal = () => {
+    let prices = this.props.cart.map(product => product[1])
+
+    let total = prices.reduce(function(a,b){
+      return a + b
+    }, 0)
+
+    return total
+  }
+
 
   render(){
     return(
@@ -34,8 +44,7 @@ class Cart extends Component {
         </ol>
 
         <h2>Cart Total:</h2>
-        <h3>$</h3>
-
+        <h3>${this.getCartTotal()}</h3>
 
       </div>
     )
