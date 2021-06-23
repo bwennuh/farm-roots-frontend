@@ -51,6 +51,7 @@ class App extends Component {
           user: foundFarm
         })
         this.renderFarm(foundFarm.id)
+        // this.renderAllFarms()
     })
     }
   }
@@ -66,18 +67,10 @@ class App extends Component {
   renderAllFarms = () => {
     fetch(farms_URL)
         .then(response => response.json())
-        .then(allFarmObject => {
+        .then(allFarms => {
           this.setState({
-            farms: allFarmObject
+            farms: allFarms
           })
-        })
-  }
-
-  renderFarm = (id) => {
-    fetch(farms_URL + id)
-        .then(response => response.json())
-        .then(farmObject => {
-          this.fetchFarmProducts(id)
         })
   }
 
@@ -91,11 +84,25 @@ class App extends Component {
       })
   }
 
+  renderFarm = (id) => {
+    fetch(farms_URL + id)
+        .then(response => response.json())
+        .then(farmObject => {
+          this.setState({
+            farms: [farmObject]
+          })
+          this.fetchFarmProducts(id)
+        })
+  }
+
   fetchFarmProducts = (id) => {
     fetch(products_URL)
     .then(response => response.json())
     .then(productsArray => {
         let products = productsArray.filter(product => product.farm_id === id)
+        this.setState({
+          products: products
+        })
       })
   }
 
@@ -143,8 +150,11 @@ class App extends Component {
     })
   }
 
-  createFarm = (x) => {
-    console.log(x)
+  createFarm = (farm) => {
+    console.log(farm)
+    // this.setState({
+    //   farms: [...this.state.farms, farm]
+    // })
   }
 
   render(){
@@ -157,7 +167,7 @@ class App extends Component {
         { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm}/> : null }
 
 
-        <Switch>
+        {/* <Switch>
           <Route path='/farm-info'>
             <FarmPage />
           </Route>
@@ -168,13 +178,13 @@ class App extends Component {
 
           {/* <Route path='/new-farm'>
             <FarmForm />
-          </Route> */}
+          </Route>
 
           <Route path='/product'>
             <Product />
           </Route>
 
-        </Switch>
+        </Switch> */}
       </div>
     );
   }

@@ -6,17 +6,13 @@ import Cart from './Cart'
 export default class ProductCard extends Component {
 
     state = {
+        farmerPage: this.props.farmerPage,
         productNames: [],
         productPrices: [],
         datesAvailable: [],
     }
 
     sendToFarmPage = () => {
-        // let x = "Brenna"
-        // let price = 9
-        // let info = "hey"
-        // this.props.productCartInfo(x, price, info)
-
         let productName = this.props.name
         let price = this.props.price
         let info = "fruit"
@@ -33,7 +29,8 @@ export default class ProductCard extends Component {
                     <p>Dates Available</p>
                     <p>Price: ${this.props.price}</p>
                 </div>
-                <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button>
+                {this.state.farmerPage === true ? <button value = {"prods"} onClick={() => console.log("Add edit produce logic")}>Edit Produce</button> : <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
+                
 
             </div>
 

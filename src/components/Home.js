@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom'
 
 import Cart from './Cart'
 import FarmCardContainer from './FarmCardContainer.js'
-import FarmPage from './FarmPage.js'
+import FarmerPage from './FarmerPage.js'
 
 class Home extends Component {
 
@@ -42,24 +41,47 @@ class Home extends Component {
     })
   }
 
+  getFarmerPage = () => {
+    let farm = this.props.farms.find(farm => farm.farmer_name === this.props.username)
+    return farm
+  }
+
   render(){
     return(
       <div className="home-page">
+        { this.props.checked === true ? 
+
+          <div id="farmer-page">
+
+            <h2>{`Username: ${this.props.username}`}</h2>
+            <FarmerPage farm={this.getFarmerPage()} products={this.props.products}/>
+
+          </div>
+
+          :
+
+          <div id="customer-page">
+
+            <h2>{`Username: ${this.props.username}`}</h2>
+            <button onClick={() => this.seeCart()}>See Cart</button>
+            <button onClick={() => this.closeCart()}>Close Cart</button>
+            { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} /> : null }
         
-        { this.props.checked == true ? <h1>Farmer Home Page</h1> : <h1>Customer Home Page</h1> }
+            { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}
+
+          </div> 
+        }
+         
+        {/* { this.props.checked == true ? <h1>Farmer Home Page</h1> : <h1>Customer Home Page</h1> } */}
+
         {/* <h1>Customer Home Page</h1> */}
-        <h2>{`Username: ${this.props.username}`}</h2>
+        {/* <h2>{`Username: ${this.props.username}`}</h2>
         <button onClick={() => this.seeCart()}>See Cart</button>
-        <button onClick={() => this.closeCart()}>Close Cart</button>
+        <button onClick={() => this.closeCart()}>Close Cart</button> */}
 
-        { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} /> : null }
-
-
-        {/* { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} changeToFarmPage={this.changeToFarmPage}/> : null } */}
-
-        {/* { this.state.display === "Farm" ? <FarmPage /> : null} */}
+        {/* { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} /> : null }
         
-        { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}
+        { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null} */}
 
       </div>
     )

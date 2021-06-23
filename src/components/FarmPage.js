@@ -21,11 +21,6 @@ class FarmPage extends Component {
     })
   }
 
-  // addtoCart = (e) => {
-  //   console.log (e)
-  // }
-
-
 
   render(){
        
@@ -40,7 +35,7 @@ class FarmPage extends Component {
 
         {/* <ProductCard productCartInfo={this.productCartInfo} addToCart={this.props.addToCart}/> */}
 
-        {this.props.produce?.map(product => <ProductCard name={product.name} price={product.price} addToCart={this.props.addToCart}/> )}
+        {this.props.produce?.map(product => <ProductCard name={product.name} price={product.price} addToCart={this.props.addToCart} farmerPage={false}/> )}
 
         <div style = {{display:"none"}}>
           <Switch>
