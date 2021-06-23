@@ -25,6 +25,7 @@ class Login extends Component {
       username: user
     })
     this.props.getUsername(user, this.state.checked)
+    this.props.fetchUser(user, this.state.checked)
     this.props.changeToHome()
   }
 
