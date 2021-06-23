@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
 import FarmPage from './FarmPage';
 import ProductCard from './ProductCard';
 
 class FarmCard extends Component {
+
+  state = {
+    display: ""
+  }
 
   showFarmInfoPage = () => {
 
@@ -20,15 +23,17 @@ class FarmCard extends Component {
           <button>Farm Info Page</button>
         </Link> */}
 
-        <button>Farm Info Page</button>
-        <FarmPage addToCart={this.props.addToCart} />
+        <h3>Products Available for Purchase:</h3>
+        <ul>
+          {this.props.produce.map(product => <li>{product.name}</li>)}
+        </ul>
 
+        <button value={this.props.id} onClick={(e) => this.props.changeToFarmPage(e)}>Farm Info Page</button>
 
-        {/* <Link to='/product'> */}
-          <button>Add Product</button>
-          {this.props.produce?.map(product => <ProductCard name={product.name} addToCart={this.props.addToCart}/> )}
-          {/* <ProductCard /> */}
-        {/* </Link> */}
+        {/* <FarmPage addToCart={this.props.addToCart} /> */}
+
+        <button>Add Product</button>
+        {/* {this.props.produce?.map(product => <ProductCard name={product.name} addToCart={this.props.addToCart}/> )} */}
 
       </div>
 
