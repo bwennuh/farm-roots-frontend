@@ -26,7 +26,7 @@ class FarmCard extends Component {
 
         {/* <Link to='/product'> */}
           <button>Add Product</button>
-          {this.props.products.map(product => <ProductCard name={product} addToCart={this.props.addToCart}/> )}
+          {this.props.produce?.map(product => <ProductCard name={product.name} addToCart={this.props.addToCart}/> )}
           {/* <ProductCard /> */}
         {/* </Link> */}
 

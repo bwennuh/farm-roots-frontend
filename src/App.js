@@ -41,6 +41,9 @@ class App extends Component {
           user: foundCustomer
         })
         this.renderCustomer(foundCustomer.id)
+        this.renderAllFarms()
+        this.fetchAllFarmProducts()
+        
     })
     } else if (checked === true) {
       console.log("Testing if statement for checked = true")
@@ -65,6 +68,18 @@ class App extends Component {
         })
   }
 
+  renderAllFarms = () => {
+    fetch(farms_URL)
+        .then(response => response.json())
+        .then(allFarmObject => {
+          console.log(allFarmObject)
+          this.setState({
+            farms: allFarmObject
+          })
+          
+        })
+  }
+
   renderFarm = (id) => {
     fetch(farms_URL + id)
         .then(response => response.json())
@@ -72,6 +87,18 @@ class App extends Component {
           console.log(farmObject)
           this.fetchFarmProducts(id)
         })
+  }
+
+
+  fetchAllFarmProducts = () => {
+    fetch(products_URL)
+    .then(response => response.json())
+    .then(productsArray => {
+        console.log(productsArray)
+        this.setState({
+          products: productsArray
+        })
+      })
   }
 
   fetchFarmProducts = (id) => {
@@ -136,7 +163,7 @@ class App extends Component {
       <div className="App">
         <Navbar changeToLogin = {this.changeToLogin} changeToHome = {this.changeToHome} changeToNewFarmForm={this.changeToNewFarmForm} />
 
-        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} /> : null }
+        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products}/> : null }
         { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
         { this.state.display === "new farm form" ? <FarmForm /> : null }
 

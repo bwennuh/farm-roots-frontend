@@ -52,7 +52,7 @@ class Home extends Component {
         <button onClick={() => this.seeCart()}>See Cart</button>
         <button onClick={() => this.closeCart()}>Close Cart</button>
 
-        { this.state.display === "Home" ? <FarmCardContainer addToCart={this.addToCart} /> : null }
+        { this.state.display === "Home" ? <FarmCardContainer farms = {this.props.farms} addToCart={this.addToCart} products = {this.props.products}/> : null }
         
         { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}
 
