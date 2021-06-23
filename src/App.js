@@ -10,36 +10,107 @@ import Cart from './components/Cart.js'
 import FarmForm from './components/FarmForm.js'
 import Product from './components/Product.js'
 
+const BASE_URL = 'http://localhost:3001/'
+const customers_URL = 'http://localhost:3001/customers/'
+const purchases_URL = 'http://localhost:3001/purchases/'
+const products_URL = 'http://localhost:3001/products/'
+const farms_URL = 'http://localhost:3001/farms/'
+
 class App extends Component {
+
+
 
   state = {
     username: "",
     checked: false,
     display: "login",
-    user: {}
-    // farms: [],
-    // customers: []
+    user: {},
+    purchases: [],
+    products: [],
+    farms: []
   }
 
-  checkUserType = () => {
-    if (this.state.checked === true) {
-      // this.state.farms.find(farm => farm.farmer_name == this.state.username)
-      
-      // find user from /farms
-    } else {
-      // find user from /customers
+  fetchUser = (username, checked) => {
+    if (checked === false) {
+      console.log("Testing if statement for checked = false")
+      fetch(customers_URL)
+      .then(response => response.json())
+      .then(customersArray => {
+        let foundCustomer = customersArray.find(customer => customer.name === username)
+        this.setState({
+          user: foundCustomer
+        })
+        this.renderCustomer(foundCustomer.id)
+    })
+    } else if (checked === true) {
+      console.log("Testing if statement for checked = true")
+      fetch(farms_URL)
+      .then(response => response.json())
+      .then(farmsArray => {
+        let foundFarm = farmsArray.find(farm => farm.farmer_name === username)
+        this.setState({
+          user: foundFarm
+        })
+        this.renderFarm(foundFarm.id)
+    })
     }
   }
 
+  renderCustomer = (id) => {
+    fetch(customers_URL + id)
+        .then(response => response.json())
+        .then(customerObject => {
+          console.log(customerObject)
+          this.fetchCustomerPurchases(id)
+        })
+  }
+
+  renderFarm = (id) => {
+    fetch(farms_URL + id)
+        .then(response => response.json())
+        .then(farmObject => {
+          console.log(farmObject)
+          this.fetchFarmProducts(id)
+        })
+  }
+
+  fetchFarmProducts = (id) => {
+    fetch(products_URL)
+    .then(response => response.json())
+    .then(productsArray => {
+        let products = productsArray.filter(product => product.farm_id === id)
+        console.log(products)
+      })
+  }
+
+
+
+  fetchCustomerPurchases = (id) => {
+    fetch(purchases_URL)
+        .then(response => response.json())
+        .then(purchasesArray => {
+          let foundPurchases = purchasesArray?.filter(purchase => purchase.customer_id === id)
+          console.log(foundPurchases)
+          this.fetchCustomerProducts(foundPurchases)
+    })
+  }
+
+  fetchCustomerProducts = (purchases) => {
+    fetch(products_URL)
+        .then(response => response.json())
+        .then(productsArray => {
+          purchases.map(purchase => {
+            let product = productsArray.find(product => product.id === purchase.product_id)
+            console.log(product)
+          })
+    })
+  }
 
   getUsername = (user, checked) => {
     this.setState({
       username: user,
       checked: checked
     })
-    console.log(user)
-    console.log(checked)
-
   }
 
   changeToHome = () => {
@@ -66,7 +137,7 @@ class App extends Component {
         <Navbar changeToLogin = {this.changeToLogin} changeToHome = {this.changeToHome} changeToNewFarmForm={this.changeToNewFarmForm} />
 
         { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} /> : null }
-        { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username}/> : null }
+        { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
         { this.state.display === "new farm form" ? <FarmForm /> : null }
 
 
