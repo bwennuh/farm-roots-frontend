@@ -16,7 +16,6 @@ class FarmCardContainer extends Component {
 
   sendProduceToCards = (id) => {
       let produce = this.props.products.filter(product => product.farm_id === id)
-      console.log(produce)
       // this.setState({
       //   produce: produce
       // })
