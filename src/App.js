@@ -143,6 +143,10 @@ class App extends Component {
     })
   }
 
+  createFarm = (x) => {
+    console.log(x)
+  }
+
   render(){
     return (
       <div className="App">
@@ -150,7 +154,7 @@ class App extends Component {
 
         { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products}/> : null }
         { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
-        { this.state.display === "new farm form" ? <FarmForm /> : null }
+        { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm}/> : null }
 
 
         <Switch>
