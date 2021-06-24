@@ -41,7 +41,7 @@ class Home extends Component {
 
           <div id="farmer-page">
 
-            <h2>{`Username: ${this.props.username}`}</h2>
+            <h2 id="username-header">{`Username: ${this.props.username}`}</h2>
             <FarmerPage farm={this.getFarmerPage()} products={this.props.products} deleteAProduct={this.props.deleteAProduct}/>
 
           </div>
@@ -50,9 +50,9 @@ class Home extends Component {
 
           <div id="customer-page">
 
-            <h2>{`Username: ${this.props.username}`}</h2>
-            <button onClick={() => this.changeToCart()}>See Cart</button>
-            <button onClick={() => this.changeToHome()}>Close Cart</button>
+            <h2 id="username-header">{`Username: ${this.props.username}`}</h2>
+            <button id="see-cart-button" onClick={() => this.changeToCart()}>See Cart</button>
+            <button id="close-cart-button" onClick={() => this.changeToHome()}>Close Cart</button>
             { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} /> : null }
         
             { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}

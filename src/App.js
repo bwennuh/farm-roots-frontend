@@ -197,25 +197,6 @@ class App extends Component {
         { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
         { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm} errors={this.state.errors}/> : null }
 
-
-        {/* <Switch>
-          <Route path='/farm-info'>
-            <FarmPage />
-          </Route>
-
-          {/* <Route path='/cart'>
-            <Cart />
-          </Route> */}
-
-          {/* <Route path='/new-farm'>
-            <FarmForm />
-          </Route>
-
-          <Route path='/product'>
-            <Product />
-          </Route>
-
-        </Switch> */}
       </div>
     );
   }
