@@ -32,7 +32,6 @@ class FarmCard extends Component {
 
         {/* <FarmPage addToCart={this.props.addToCart} /> */}
 
-        <button>Add Product</button>
         {/* {this.props.produce?.map(product => <ProductCard name={product.name} addToCart={this.props.addToCart}/> )} */}
 
       </div>

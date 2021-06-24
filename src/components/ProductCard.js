@@ -7,7 +7,7 @@ export default class ProductCard extends Component {
         farmerPage: this.props.farmerPage,
         productNames: [],
         productPrices: [],
-        datesAvailable: [],
+        datesAvailable: []
     }
 
     sendToFarmPage = () => {
@@ -18,7 +18,9 @@ export default class ProductCard extends Component {
         this.props.addToCart(productName, price, info)
     }
 
+
     render() {
+
         return (
             <div>
                 <div>
@@ -27,7 +29,13 @@ export default class ProductCard extends Component {
                     <p>Dates Available</p>
                     <p>Price: ${this.props.price}</p>
                 </div>
-                { this.state.farmerPage === true ? <button value = {"prods"} onClick={() => console.log("Add edit produce logic")}>Edit Produce</button> : <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
+                { this.state.farmerPage === true ? 
+                    <div>
+                        <button value = {"prods"} onClick={() => this.props.renderEditProductForm(this.props.name, this.props.price, this.props.id)}>Edit Produce</button>
+                        <button value = {"prods"} onClick={() => this.props.deleteAProduct(this.props.id)}>Delete Produce</button>
+                    </div>
+                     : 
+                <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
                 
 
             </div>
