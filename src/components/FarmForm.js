@@ -8,44 +8,29 @@ class FarmForm extends Component {
     bio: "",
     address: "",
     farmer_name: ""
-}
+  }
 
-submitHandler = (e) => {
-    e.preventDefault()
-    
-    // //Contains a new PokemonMon
-    // const newPokemon = {
-    //     name: this.state.name,
-    //     weight: this.state.weight,
-    //     sprite: this.state.sprite,
-    //     type: this.state.type,
-    //     description: this.state.description
-    // }
+  submitHandler = (e) => {
+      e.preventDefault()
+      
+      //Make a reqObj
+      const reqObj = {}
+      reqObj.headers = {"Content-Type": "application/json"}
+      reqObj.method = "POST"
+      reqObj.body = JSON.stringify({...this.state})
 
-    //Make a reqObj
-    const reqObj = {}
-    reqObj.headers = {"Content-Type": "application/json"}
-    reqObj.method = "POST"
-    reqObj.body = JSON.stringify({...this.state})
-
-
-   
-    //POST ---- /pokemon (index)
-    fetch("http://localhost:3001/farms", reqObj)
-        .then(res => res.json())
-        .then((newFarm) => {
-            this.props.createFarm(newFarm)
-            this.setState({
-              name: "",
-              bio: "",
-              address: "",
-              farmer_name: ""
-            })
-        })
-
-} 
-
-
+      fetch("http://localhost:3001/farms", reqObj)
+          .then(res => res.json())
+          .then((newFarm) => {
+              this.props.createFarm(newFarm)
+              this.setState({
+                name: "",
+                bio: "",
+                address: "",
+                farmer_name: ""
+              })
+          })
+  } 
 
   render(){
     return(
@@ -69,6 +54,15 @@ submitHandler = (e) => {
           <input type="file" placeholder="Farm Picture" onChange={(e) => this.setState({weight: e.target.value})}/><br></br><br></br> */}
 
           <button type="submit">Submit Farm</button>
+
+            { this.props.errors?.length > 0 ? 
+            <div> 
+              <h3>Error:</h3>
+              <ul>
+                {this.props.errors.map(error => <li>{error}</li>)}
+              </ul>
+            </div>
+             : null }
 
         </form>
 

@@ -25,7 +25,8 @@ class App extends Component {
     user: {},
     purchases: [],
     products: [],
-    farms: []
+    farms: [],
+    errors: []
   }
 
   fetchUser = (username, checked) => {
@@ -164,12 +165,29 @@ class App extends Component {
   }
 
   createFarm = (farm) => {
-    console.log(farm)
-    // this.setState({
-    //   farms: [...this.state.farms, farm]
-    // })
-  }
+    if (farm.hasOwnProperty("exception")){
+      console.log(farm.exception)
 
+      let errorsArray = farm.exception.split(", ")
+      let firstError = errorsArray[0].split("Validation failed: ").splice(-1)[0]
+      let lastError = errorsArray.slice(-1)[0].substring(0, errorsArray.slice(-1)[0].length - 1)
+
+      errorsArray.shift()
+      errorsArray.unshift(firstError)
+      errorsArray.pop()
+      errorsArray.push(lastError)
+
+      this.setState({
+        errors: errorsArray
+      })
+
+    } else {
+      this.setState({
+        farms: [...this.state.farms, farm]
+      })
+    }
+  }
+  
   render(){
     return (
       <div className="App">
@@ -177,7 +195,7 @@ class App extends Component {
 
         { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products} deleteAProduct={this.deleteAProduct}/> : null }
         { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
-        { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm}/> : null }
+        { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm} errors={this.state.errors}/> : null }
 
 
         {/* <Switch>
