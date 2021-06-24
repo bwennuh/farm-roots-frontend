@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Product = (props) => {
+const EditProduct = (props) => {
 
     console.log('!')
 
@@ -23,24 +23,10 @@ const Product = (props) => {
     
     function showDateSelections(startDate, endDate){
 
-        console.log('!!!')
-    //   console.log("From Product Component:")
-    //   console.log("Start Date: " + startDate1)
-    //   console.log("End Date: " + endDate1)
-    //   console.log(superStartDate)
+      setStartDate1(startDate)
+      setEndDate1(endDate)
 
-        setStartDate1(startDate)
-        setEndDate1(endDate)
-
-        console.log('!!!!')
-
-        superStartDate.push(1)
-        console.log(superStartDate)
-        console.log(superStartDate.splice(-1))
-
-        console.log('!!!!!')
-
-      // superStartDate.push(startDate)
+      superStartDate.push(1)
       setSuperStartDate([...superStartDate, startDate])
     }
 
@@ -55,26 +41,24 @@ const Product = (props) => {
       }
     })
 
-
     function submitHandler(e){
       e.preventDefault()
-      
+      console.log("Edited product submitted!")
       const newProduct = {
           name: name,
           price: price,
           farm_id: props.farmId
       }
-  
+
       const reqObj = {}
 
       reqObj.headers = {"Content-Type": "application/json"}
-      reqObj.method = "POST"
+      reqObj.method = "PATCH"
       reqObj.body = JSON.stringify(newProduct)
         
-      fetch("http://localhost:3001/products", reqObj)
+      fetch(`http://localhost:3001/products/${props.product.id}`, reqObj)
           .then(res => res.json())
-          .then((newProduct) => {
-              // this.props.createFarm(newFarm)
+          .then((updatedProduct) => {
             setName("")
             setPrice(0)
           })
@@ -83,12 +67,13 @@ const Product = (props) => {
     return (
     <div className="product-page">
 
-      <h1>Add a Product</h1>
+      <button onClick={() => props.changeToHome()}>Go Back to Home Page</button>
+      <h1>Edit a Product</h1>
 
       <form className="new-product-form" onSubmit={(e) => submitHandler(e)}>
 
-        <label>Describe Your Produce:</label><br></br>
-        <input type="text" placeholder="" onChange={(e) => setName(e.target.value)} /><br></br><br></br>
+        <label>Produce Name:</label><br></br>
+        <input type="text" placeholder={props.product.name} onChange={(e) => setName(e.target.value)} /><br></br><br></br>
 
         <label>Harvest Dates</label>
         <ProductCalendar showDateSelections={showDateSelections} />
@@ -98,13 +83,13 @@ const Product = (props) => {
         </ul>
 
         <label>Price:</label><br></br>
-        <span>$</span><input type="text" placeholder="Price" onChange={(e) => setPrice(+e.target.value)} /><br></br><br></br>
+        <span>$</span><input type="text" placeholder={props.product.price} onChange={(e) => setPrice(+e.target.value)} /><br></br><br></br>
 
 
         <label>Upload Farm Picture:</label><br></br>
         <input type="file" placeholder="Farm Picture" /><br></br><br></br>
 
-        <button type="submit">Submit Product</button>
+        <button type="submit">Update Product</button>
 
       </form>
 
@@ -112,4 +97,4 @@ const Product = (props) => {
   )
 }
 
-export default Product
+export default EditProduct

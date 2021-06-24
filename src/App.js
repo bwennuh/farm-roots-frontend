@@ -125,6 +125,19 @@ class App extends Component {
     })
   }
 
+  deleteAProduct = (id) => {
+    const newProducts = this.state.products.filter(product => product.id !== id)
+
+    // e.preventDefault()
+    
+    fetch(`http://localhost:3001/products/${id}`, {method: "DELETE"})
+        .then(res => res.json())
+        .then(() => this.setState({
+          products: newProducts
+        }))
+  }
+
+
   getUsername = (user, checked) => {
     this.setState({
       username: user,
@@ -162,7 +175,7 @@ class App extends Component {
       <div className="App">
         <Navbar changeToLogin = {this.changeToLogin} changeToHome = {this.changeToHome} changeToNewFarmForm={this.changeToNewFarmForm} />
 
-        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products}/> : null }
+        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products} deleteAProduct={this.deleteAProduct}/> : null }
         { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
         { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm}/> : null }
 

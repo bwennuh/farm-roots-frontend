@@ -42,7 +42,7 @@ class Home extends Component {
           <div id="farmer-page">
 
             <h2>{`Username: ${this.props.username}`}</h2>
-            <FarmerPage farm={this.getFarmerPage()} products={this.props.products}/>
+            <FarmerPage farm={this.getFarmerPage()} products={this.props.products} deleteAProduct={this.props.deleteAProduct}/>
 
           </div>
 
