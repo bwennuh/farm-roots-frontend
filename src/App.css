@@ -25,3 +25,134 @@
   transition: all 0.15s;
 }
 
+.login-page {
+  padding: 2em; 
+  height: 130vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  background-image: url('https://github.com/bwennuh/farm-roots-frontend/blob/main/farm.jpeg?raw=true')
+}
+
+.farm-roots {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 50pt;
+  text-shadow: -2px 2px 0 white, 2px 2px 0 white, 2px -2px 0 white, -2px -2px 0 white;
+}
+
+#enter-username, #username-header, #farm-info-header, #new-farm-form-header {
+  font-size: 25pt;
+  text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+#username-header, #bio, #current-products {
+  font-size: 20pt;
+  text-shadow: -0.5px 0.5px 0 white, 0.5px 0.5px 0 white, 0.5px -0.5px 0 white, -0.5px -0.5px 0 white;
+}
+
+#i-am-a-farmer {
+  font-size: 14pt;
+  color: white;
+  text-shadow: -1px 1px 0 black, 1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
+}
+
+#login-button, #signup-button {
+  display: inline-block;
+  height: 30px;
+  padding: 0.5em 3em;
+  border: 0.16em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  color:#FFFFFF;
+  background-color: gray;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.product-card {
+  text-align: center;
+  border: black solid 10px;
+  padding: 5px;
+  width: 250px;
+  height: 250px;
+  display: inline-grid;
+  margin: 25px;
+  box-shadow: 10px 10px green;
+  /* box-shadow: 10px 10px orange, -10px -10px green; */
+  background-color: white;
+}
+
+.farm-card {
+  text-align: center;
+  border: black solid 10px;
+  padding: 5px;
+  min-width: 200px;
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 25px;
+  box-shadow: 10px 10px green;
+  background-color: white;
+}
+
+.farm-products-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.list-product {
+  /* list-style-type: none; */
+  padding-bottom: 5px;
+}
+
+.add-to-cart-button, .farm-info-button, #see-cart-button, #close-cart-button, #submit-farm-button {
+  display: inline-block;
+  height: 50px;
+  /* padding: 0.5em 3em; */
+  border: 0.16em solid #FFFFFF;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  color:#FFFFFF;
+  background-color: gray;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.farm-info-button {
+  margin-top: auto;
+}
+
+#see-cart-button, #close-cart-button, #submit-farm-button {
+  width: 150px;
+}
+
+.new-farm-form {
+  font-size: 15pt;
+  font-family: 'Roboto',sans-serif;
+}
+
+.farm-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+
+/* .home-page, .farm-form-page {
+  background-color: rgb(181, 238, 181);
+} */
+
+
+

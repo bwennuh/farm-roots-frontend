@@ -34,8 +34,8 @@ class FarmForm extends Component {
 
   render(){
     return(
-      <div>
-        <h1>New Farm Form</h1>
+      <div id="farm-form-page">
+        <h1 id="new-farm-form-header">New Farm Form</h1>
         <form className="new-farm-form" onSubmit = {e => this.submitHandler(e)}>
 
           <label>Farm Name:</label><br></br>
@@ -53,7 +53,7 @@ class FarmForm extends Component {
           {/* <label>Upload Farm Picture:</label><br></br>
           <input type="file" placeholder="Farm Picture" onChange={(e) => this.setState({weight: e.target.value})}/><br></br><br></br> */}
 
-          <button type="submit">Submit Farm</button>
+          <button id="submit-farm-button" type="submit">Submit Farm</button>
 
             { this.props.errors?.length > 0 ? 
             <div> 

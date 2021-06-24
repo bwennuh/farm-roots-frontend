@@ -12,7 +12,7 @@ class FarmCard extends Component {
 
   render(){
     return(
-      <div>
+      <div className="farm-card">
         
         <h2>Farm Name: {this.props.farm}</h2>
 
@@ -21,11 +21,11 @@ class FarmCard extends Component {
         </Link> */}
 
         <h3>Products Available for Purchase:</h3>
-        <ul>
-          {this.props.produce.map(product => <li>{product.name}</li>)}
+        <ul className="farm-products-list">
+          {this.props.produce.map(product => <li className="list-product">{product.name}</li>)}
         </ul>
 
-        <button value={this.props.id} onClick={(e) => this.props.changeToFarmPage(e)}>Farm Info Page</button>
+        <button className="farm-info-button" value={this.props.id} onClick={(e) => this.props.changeToFarmPage(e)}>Farm Info Page</button>
 
         {/* <FarmPage addToCart={this.props.addToCart} /> */}
 

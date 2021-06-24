@@ -22,7 +22,7 @@ export default class ProductCard extends Component {
     render() {
 
         return (
-            <div>
+            <div className="product-card">
                 <div>
                     <img></img>
                     <h3>Product Name: {this.props.name}</h3>
@@ -35,7 +35,7 @@ export default class ProductCard extends Component {
                         <button value = {"prods"} onClick={() => this.props.deleteAProduct(this.props.id)}>Delete Produce</button>
                     </div>
                      : 
-                <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
+                <button className="add-to-cart-button" value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
                 
 
             </div>

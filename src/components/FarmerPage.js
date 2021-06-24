@@ -34,12 +34,12 @@ class FarmerPage extends Component {
     return(
       <div className="home-page">
 
-        <h1>{this.props.farm?.name} Farm Information Page</h1>
+        <h1 id="farm-info-header">{this.props.farm?.name} Farm Information Page</h1>
 
-        <h2>Bio: {this.props.farm?.bio}</h2>
+        <h2 id="bio">Bio: {this.props.farm?.bio}</h2>
 
-        <h2>Current Product Offerings:</h2>
-        <button onClick={() => this.renderNewProductForm()}>Add Product</button>
+        <h2 id="current-products">Current Product Offerings:</h2>
+        <button onClick={() => this.renderNewProductForm()}>Add Product</button><br></br>
 
         { this.state.display === "Home" ? 
         this.props.products?.map(product => <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} addToCart={this.props.addToCart} farmerPage={true} renderEditProductForm={this.renderEditProductForm} deleteAProduct={this.props.deleteAProduct}/>)

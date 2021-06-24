@@ -51,7 +51,7 @@ class FarmCardContainer extends Component {
     let farmArray = this.props.farms
 
     return(
-      <div>
+      <div className="farm-card-container">
 
         { this.state.display === "All" ? farmArray.map(farm => (<FarmCard key={farm.id} id={farm.id} farm={farm.name} produce={this.sendProduceToCards(farm.id)} changeToFarmPage={this.changeToFarmPage}/>
          )) : null }

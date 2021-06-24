@@ -35,7 +35,7 @@ class Login extends Component {
 
         <h1 className="farm-roots">Farm Roots 🥕</h1>
 
-        <h2>Enter username:</h2>
+        <h2 id="enter-username">Enter username:</h2>
         <form onSubmit = {(e) => this.submitHandler(e)}>
           <input placeholder="username"/><br></br><br></br>
           <button type="submit" id="login-button">Login</button>
@@ -44,7 +44,7 @@ class Login extends Component {
         <br></br>
 
         <label>
-          <span>I am a farmer</span><br></br>
+          <span id="i-am-a-farmer">I am a farmer</span><br></br>
           <Switch onChange={this.handleChange} checked={this.state.checked} />
         </label>
       

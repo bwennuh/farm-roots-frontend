@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 function Navbar(props) {
   return (
     <div className ="navbar">
 
         <div className="login-button">
-            <button className="navbar-button" id="login-button" onClick = {() => props.changeToLogin()}>Login Page</button>
+            <button className="navbar-button" id="login-page" onClick = {() => props.changeToLogin()}>Login Page</button>
         </div>
 
         <div className="home-button">
