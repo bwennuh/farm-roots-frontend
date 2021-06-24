@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Cart from './Cart'
 
 
 export default class ProductCard extends Component {
@@ -29,7 +27,7 @@ export default class ProductCard extends Component {
                     <p>Dates Available</p>
                     <p>Price: ${this.props.price}</p>
                 </div>
-                {this.state.farmerPage === true ? <button value = {"prods"} onClick={() => console.log("Add edit produce logic")}>Edit Produce</button> : <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
+                { this.state.farmerPage === true ? <button value = {"prods"} onClick={() => console.log("Add edit produce logic")}>Edit Produce</button> : <button value = {"prods"} onClick={()=>this.sendToFarmPage()}>Add to Cart</button> }
                 
 
             </div>

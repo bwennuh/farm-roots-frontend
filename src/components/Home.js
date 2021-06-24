@@ -29,18 +29,6 @@ class Home extends Component {
     })
   }
 
-  seeCart = () => {
-    this.setState({
-      display: "Cart"
-    })
-  }
-
-  closeCart = () => {
-    this.setState({
-      display: "Home"
-    })
-  }
-
   getFarmerPage = () => {
     let farm = this.props.farms.find(farm => farm.farmer_name === this.props.username)
     return farm
@@ -63,8 +51,8 @@ class Home extends Component {
           <div id="customer-page">
 
             <h2>{`Username: ${this.props.username}`}</h2>
-            <button onClick={() => this.seeCart()}>See Cart</button>
-            <button onClick={() => this.closeCart()}>Close Cart</button>
+            <button onClick={() => this.changeToCart()}>See Cart</button>
+            <button onClick={() => this.changeToHome()}>Close Cart</button>
             { this.state.display === "Home" ? <FarmCardContainer farms={this.props.farms} addToCart={this.addToCart} products={this.props.products} /> : null }
         
             { this.state.display === "Cart" ? <Cart cart={this.state.cart} /> : null}
