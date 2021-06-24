@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import FarmPage from './FarmPage';
-import ProductCard from './ProductCard';
-
 class FarmCard extends Component {
 
   state = {

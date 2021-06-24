@@ -53,16 +53,10 @@ class FarmCardContainer extends Component {
     return(
       <div>
 
-        {/* {farmArray.map(farm => this.sendProduceToCards(farm.id))} */}
-
         { this.state.display === "All" ? farmArray.map(farm => (<FarmCard key={farm.id} id={farm.id} farm={farm.name} produce={this.sendProduceToCards(farm.id)} changeToFarmPage={this.changeToFarmPage}/>
          )) : null }
 
         { this.state.display === "Farm" ? <FarmPage farm={farmArray.find(farm => farm.id === this.state.farmId)} produce={this.state.produce} addToCart={this.props.addToCart} changeToAllFarms={this.changeToAllFarms}/> : null }
-
-        {/* {farmArray.map(farm => (<FarmCard key={farm.id} farm={farm.name} addToCart={this.props.addToCart} produce={this.sendProduceToCards(farm.id)} />
-         ))} */}
-      
 
       </div>
     )
