@@ -14,7 +14,10 @@ class FarmCard extends Component {
     return(
       <div className="farm-card">
         
-        <h2>Farm Name: {this.props.farm}</h2>
+        <h3>Farm Name:</h3>
+        <h2>{this.props.farm}</h2>
+
+        <img src="https://images-na.ssl-images-amazon.com/images/I/616x1dTdTaL.jpg"></img>
 
         {/* <Link to='/farm-info'>
           <button>Farm Info Page</button>

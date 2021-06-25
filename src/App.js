@@ -1,14 +1,11 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
 
 import Login from './components/Login.js'
 import Navbar from './components/Navbar.js'
 import Home from './components/Home.js'
-import FarmPage from './components/FarmPage.js'
-// import Cart from './components/Cart.js'
 import FarmForm from './components/FarmForm.js'
-import Product from './components/Product.js'
+import CustomerForm from './components/CustomerForm.js'
 
 const BASE_URL = 'http://localhost:3001/'
 const customers_URL = 'http://localhost:3001/customers/'
@@ -164,6 +161,12 @@ class App extends Component {
     })
   }
 
+  changeToNewUserForm = () => {
+    this.setState({
+      display: "new user form"
+    })
+  }
+
   createFarm = (farm) => {
     if (farm.hasOwnProperty("exception")){
       console.log(farm.exception)
@@ -190,12 +193,19 @@ class App extends Component {
   
   render(){
     return (
-      <div className="App">
+      <div className="app">
         <Navbar changeToLogin = {this.changeToLogin} changeToHome = {this.changeToHome} changeToNewFarmForm={this.changeToNewFarmForm} />
 
-        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked = {this.state.checked} farms = {this.state.farms} products = {this.state.products} deleteAProduct={this.deleteAProduct}/> : null }
-        { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser}/> : null }
+        { this.state.display === "home" ? <Home changeToLogin = {this.changeToLogin} username = {this.state.username} checked={this.state.checked} farms = {this.state.farms} products = {this.state.products} deleteAProduct={this.deleteAProduct}/> : null }
+        { this.state.display === "login" ? <Login changeToHome = {this.changeToHome} getUsername = {this.getUsername} checked={this.state.checked} username={this.state.username} fetchUser={this.fetchUser} changeToNewUserForm={this.changeToNewUserForm}/> : null }
+        
+        <div className="farm-form">
         { this.state.display === "new farm form" ? <FarmForm createFarm = {this.createFarm} errors={this.state.errors}/> : null }
+        </div>
+
+        <div className="customer-form">
+        { this.state.display === "new user form" ? <CustomerForm changeToLogin={this.changeToLogin}/> : null }
+        </div>
 
       </div>
     );

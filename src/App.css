@@ -1,5 +1,6 @@
-.login-page {
-  text-align: center;
+.home-page {
+  margin-left: 20px;
+  margin-left: 20px;
 }
 
 .navbar {
@@ -13,7 +14,8 @@
   height: 50px;
   padding: 0.5em 3em;
   border: 0.16em solid #FFFFFF;
-  margin: 0 0.3em 0.3em 0;
+  margin: 0 0.3em 0.3em 1;
+  margin-top: 2px;
   box-sizing: border-box;
   text-decoration: none;
   text-transform: uppercase;
@@ -26,6 +28,7 @@
 }
 
 .login-page {
+  text-align: center;
   padding: 2em; 
   height: 130vh;
   width: 100vw;
@@ -33,7 +36,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
-  background-image: url('https://github.com/bwennuh/farm-roots-frontend/blob/main/farm.jpeg?raw=true')
+  background-image: url('https://github.com/bwennuh/farm-roots-frontend/blob/main/farm.jpeg?raw=true');
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
 }
 
 .farm-roots {
@@ -42,7 +48,7 @@
   text-shadow: -2px 2px 0 white, 2px 2px 0 white, 2px -2px 0 white, -2px -2px 0 white;
 }
 
-#enter-username, #username-header, #farm-info-header, #new-farm-form-header {
+#enter-username, #username-header, #farm-info-header, #new-farm-form-header, #new-customer-form-header {
   font-size: 25pt;
   text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
 }
@@ -80,12 +86,19 @@
   border: black solid 10px;
   padding: 5px;
   width: 250px;
-  height: 250px;
+  height: auto;
   display: inline-grid;
   margin: 25px;
-  box-shadow: 10px 10px green;
+  box-shadow: 10px 10px rgb(238, 51, 113);
   /* box-shadow: 10px 10px orange, -10px -10px green; */
   background-color: white;
+}
+
+.product-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-around;
 }
 
 .farm-card {
@@ -113,7 +126,7 @@
   padding-bottom: 5px;
 }
 
-.add-to-cart-button, .farm-info-button, #see-cart-button, #close-cart-button, #submit-farm-button {
+.add-to-cart-button, .farm-info-button, #see-cart-button, #close-cart-button, #submit-farm-button, .all-farms-button, #submit-customer-button {
   display: inline-block;
   height: 50px;
   /* padding: 0.5em 3em; */
@@ -137,7 +150,7 @@
   width: 150px;
 }
 
-.new-farm-form {
+.new-farm-form, .new-customer-form {
   font-size: 15pt;
   font-family: 'Roboto',sans-serif;
 }
@@ -149,10 +162,54 @@
   justify-content: space-around;
 }
 
-
-/* .home-page, .farm-form-page {
+body {
   background-color: rgb(181, 238, 181);
-} */
+}
 
+.fruit-pic {
+  height: auto;
+  width: 250px;
+}
+
+.customer-form, .farm-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#customer-form-page, #farm-form-page, .cart-display {
+  text-align: center;
+  background-color: white;
+  padding: 5px 20px 10px 20px;
+  margin-top: 30px;
+  border-radius: 20px;
+  border: 0.25em solid black;
+  height: auto;
+  width: 400px;
+}
+
+.login-form {
+  border-radius: 20px;
+  border: 0.25em solid black;
+  background-color: rgba(235, 222, 222, 0.25);
+  height: 320px;
+  width: 400px;
+}
+
+.cart-display {
+  text-align: left
+}
+
+.cart-list-item {
+  padding: 5px;
+}
+
+.delete-cart-item-button {
+  padding-left: 2px;
+  padding-right: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
 
 
