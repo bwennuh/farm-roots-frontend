@@ -27,15 +27,16 @@ class FarmPage extends Component {
     return(
       <div className="home-page">
 
-        <button onClick={() => this.props.changeToAllFarms()}>Back to All Farms</button>
+        <button className="all-farms-button" onClick={() => this.props.changeToAllFarms()}>Back to All Farms</button>
         <h1>{this.props.farm.name} Farm Information Page</h1>
 
         <h2>Bio: <span>{this.props.farm.bio}</span></h2>
 
 
         {/* <ProductCard productCartInfo={this.productCartInfo} addToCart={this.props.addToCart}/> */}
-
+        <div className="product-card-container">
         {this.props.produce?.map(product => <ProductCard name={product.name} price={product.price} addToCart={this.props.addToCart} farmerPage={false}/> )}
+        </div>
 
         <div style = {{display:"none"}}>
           <Switch>

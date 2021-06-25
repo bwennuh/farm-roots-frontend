@@ -16,6 +16,7 @@ const EditProduct = (props) => {
     const [endDate1, setEndDate1] = useState(null)
 
     const [superStartDate, setSuperStartDate] = useState([])
+    const [superEndDate, setsuperEndDate] = useState([])
 
     const [name, setName] = useState("")
     const [price, setPrice] = useState(0)
@@ -28,13 +29,14 @@ const EditProduct = (props) => {
 
       superStartDate.push(1)
       setSuperStartDate([...superStartDate, startDate])
+      setsuperEndDate([...superEndDate, endDate])
     }
 
     useEffect(() => {
       let dateList = document.getElementById('date-list')
       let listItem = document.createElement('li')
 
-      listItem.textContent = `Start Date: ${superStartDate.slice(-1)[0]?.toLocaleDateString()}`
+      listItem.textContent = `Start Date: ${superStartDate.slice(-1)[0]?.toLocaleDateString()} - End Date: ${superEndDate.slice(-1)[0]?.toLocaleDateString()}`
 
       if (typeof superStartDate.slice(-1)[0]?.toLocaleDateString() !== 'undefined'){
         dateList.appendChild(listItem)
@@ -79,7 +81,7 @@ const EditProduct = (props) => {
         <ProductCalendar showDateSelections={showDateSelections} />
 
         <ul id="date-list">
-          <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li>
+          {/* <li>{`Start Date: ${startDate1?.toLocaleDateString()} - End Date: ${endDate1?.toLocaleDateString()}`}</li> */}
         </ul>
 
         <label>Price:</label><br></br>
