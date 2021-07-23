@@ -24,3 +24,6 @@ When a consumer logs in to the app, their home feed will contain all of the farm
 
 For any of the produce available from any of the farms, consumers will have the option to add the products to their shopping cart in order to purchase. They will also have the option to view and edit their cart, should any of the products need to be removed from the cart or updated in quantity.
 
+## Database
+The back-end code and current Farm Roots farm database can be found <a href="https://github.com/bwennuh/farm-roots-backend">here</a>.
+
